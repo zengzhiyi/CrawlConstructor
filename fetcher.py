@@ -16,7 +16,7 @@ class UrlManager(object):
         return len(self.new_urls) != 0
 
     def get_new_url(self):
-        '''把在new_urls里的最后一个url弄下来进行爬取'''
+        '''把在new_urls里的最后一个url弄下来再爬'''
         new_url = self.new_urls.pop()
         self.old_urls.add(new_url)
         return new_url
