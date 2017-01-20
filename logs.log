@@ -1,0 +1,52 @@
+2017-01-20 16:02:31,141    ERROR: exception message G:\pythonœÓƒø\≈¿≥Ê\≈¿≥Ê–°øÚº‹\logs.py logs.py logs 
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 391, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 387, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\http\client.py", line 1197, in getresponse
+    response.begin()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\socket.py", line 575, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\adapters.py", line 423, in send
+    timeout=timeout
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 643, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\util\retry.py", line 334, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 594, in urlopen
+    chunked=chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 393, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\packages\urllib3\connectionpool.py", line 313, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+requests.packages.urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='www.baidu.com', port=80): Read timed out. (read timeout=0.5)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "G:/pythonœÓƒø/≈¿≥Ê/≈¿≥Ê–°øÚº‹/testForIPool.py", line 11, in <module>
+    html = requests.get(url, proxies=proxies, timeout=0.5)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\api.py", line 70, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\sessions.py", line 488, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\sessions.py", line 609, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python35\lib\site-packages\requests\adapters.py", line 499, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='www.baidu.com', port=80): Read timed out. (read timeout=0.5)
