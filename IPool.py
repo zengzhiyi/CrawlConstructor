@@ -22,8 +22,9 @@ class getIP(object):
             id = ip[1]
             rip = str(ic) + ':' + str(id)
             data.append(rip)
+        print(len(data))
         return data
 
-# if __name__ == '__main__':
-#      IPS = getIP().getIPs()
-#      print(IPS)
+if __name__ == '__main__':
+     IPS = getIP().getIPs()
+     print(IPS)
