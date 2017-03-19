@@ -5,19 +5,19 @@ def link_crawler(seed_url, link_regex):
     :param link_regex:
     :return:
     """
-    # crawl_queue = [seed_url]
-    # seen = set(crawl_queue)
-    # old_urls = set()
-    # while crawl_queue:
-    #     url = crawl_queue.pop()
-    #     old_urls.add(url)
-    #     seen.remove(url)
-    #     html = download(url)
-    #     for link in get_links(html):
-    #         if re.match(link_regex, link):
-    #             if link not in seen and link not in old_urls:
-    #                 seen.add(link)
-    #                 crawl_queue.append(link)
+    crawl_queue = [seed_url]
+    seen = set(crawl_queue)
+    old_urls = set()
+    while crawl_queue:
+        url = crawl_queue.pop()
+        old_urls.add(url)
+        seen.remove(url)
+        html = download(url)
+        for link in get_links(html):
+            if re.match(link_regex, link):
+                if link not in seen and link not in old_urls:
+                    seen.add(link)
+                    crawl_queue.append(link)
 
 
 # 写得太啰嗦

@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import random
 import re
 
+
 class getIP(object):
     def __init__(self):
         self.headers = {
@@ -28,3 +29,4 @@ class getIP(object):
 if __name__ == '__main__':
      IPS = getIP().getIPs()
      print(IPS)
+
