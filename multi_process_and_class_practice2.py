@@ -52,9 +52,10 @@ if __name__ == '__main__':
     for i in range(100):
         url = base_url.format(i)
         p.apply_async(second_page, args=(url, q, lock, ))
+        print('创建第{}个进程完毕'.format(i))
 
-    for i in range(3500):
-        p.apply_async(read_page, args=(q, lock, ))
+    # for i in range(3500):
+    #     p.apply_async(read_page, args=(q, lock, ))
 
     p.close()
     p.join()
@@ -69,5 +70,5 @@ if __name__ == '__main__':
     total_time = end_time - start_time
     print('爬取完毕', total_time)
 
-6882 - 3500
-6889
+# 114 14 100
+# 55 25 30

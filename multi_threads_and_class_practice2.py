@@ -62,7 +62,7 @@ def second_page(link, q):
         title = tab.select('td.t > a')[0].text
         link = tab.select('td.t > a')[0].get('href')
         price = tab.select('td.t > span.pricebiao > span.price')[0].text
-        print(title, link, price)
+        # print(title, link, price)
         value = [title, link, price]
         if not q.full():
             q.put(value)
@@ -71,13 +71,11 @@ def second_page(link, q):
 def read_page(q):
     if not q.empty():
         value = q.get()
-        # 设置了timeout就会一直爬下去..就算timeout了还会这样。为什么
-        # 如果不设置timeout就是正常结束的
         try:
             html = requests.get(value[1], timeout=0.5)
-            # html = requests.get(value[1])
             print(html.status_code, value[1])
         except:
+            print('出错了')
             pass
 
 if __name__ == '__main__':
@@ -100,6 +98,7 @@ if __name__ == '__main__':
     for tc in threads1:
         tc.join()
         threads1.remove(tc)
+        threads1.clear()
         # print(tc.name + '已经结束爬取')
 
     MAX_THREADS = 100
@@ -117,18 +116,18 @@ if __name__ == '__main__':
         tp = Mythread2(read_page, args=(q, ), name='我是第{}个虫子用来解析'.format(num))
         threads2.append(tp)
         tp.setDaemon(True)
+        # tp.daemon = True
         tp.start()
         num += 1
 
     for tp in threads2:
         tp.join()
-        print(tp.name + '已经结束解析')
         threads2.remove(tp)
+        print(len(threads2))
+        # 有些线程就是动不起的，不晓得为什么。那些出错了的是直接死掉了，不算在里面的
+        # clear一下把动不起的线程都清理掉
+        threads2.clear()
 
     end_time = time.time()
     total_time = end_time - start_time
     print('爬取完毕', total_time)
-    # 用这个可以结束子进程！！
-    import sys
-    sys.exit(0)
-
