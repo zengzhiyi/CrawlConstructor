@@ -123,12 +123,12 @@ if __name__ == '__main__':
     for tp in threads2:
         tp.join()
         print(tp.name + '已经结束解析')
-        # 子进程没法结束啊、、这又是为啥
         threads2.remove(tp)
 
     end_time = time.time()
     total_time = end_time - start_time
     print('爬取完毕', total_time)
+    # 用这个可以结束子进程！！
     import sys
     sys.exit(0)
 
